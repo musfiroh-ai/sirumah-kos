@@ -1,0 +1,58 @@
+<%- include('partials/header', { user: user, title: 'Tambah Kos - SIRUMAH KOS' }) %>
+
+<div class="form-container">
+  <h1>Tambah Kos Baru</h1>
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form action="/tambah-kos" method="POST" class="form" enctype="multipart/form-data">
+    <label>Nama Kos *</label>
+    <input type="text" name="nama_kos" required>
+
+    <label>Alamat *</label>
+    <input type="text" name="alamat" required>
+
+    <label>Lokasi (Kota) *</label>
+    <input type="text" name="lokasi" required placeholder="Contoh: Semarang">
+
+    <label>Harga per Bulan (Rp) *</label>
+    <input type="number" name="harga" required min="0">
+
+    <label>Jenis Kos *</label>
+    <select name="jenis_kos" required>
+      <option value="">-- Pilih Jenis --</option>
+      <option value="putra">Putra</option>
+      <option value="putri">Putri</option>
+      <option value="campur">Campur</option>
+    </select>
+
+    <label>Fasilitas (pisahkan dengan koma)</label>
+    <input type="text" name="fasilitas" placeholder="WiFi, AC, Kamar Mandi Dalam">
+
+    <label>Deskripsi</label>
+    <textarea name="deskripsi" rows="4"></textarea>
+
+    <label>Kontak (No. HP)</label>
+    <input type="text" name="kontak" placeholder="08xxxxxxxxxx">
+
+    <fieldset class="foto-section">
+      <legend>Foto Kos</legend>
+      <p class="foto-hint">Pilih salah satu cara: <strong>upload file</strong> dari komputer ATAU isi <strong>URL gambar</strong>.</p>
+
+      <label>Upload Foto dari Komputer</label>
+      <input type="file" name="foto_file" accept="image/*">
+      <small class="form-hint">Format: JPG, PNG, WEBP, GIF. Maksimal 5MB.</small>
+
+      <label style="margin-top:14px">Atau URL Foto (link gambar dari internet)</label>
+      <input type="text" name="foto" placeholder="https://...">
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Simpan</button>
+      <a href="/" class="btn btn-secondary">Batal</a>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,48 @@
+<%- include('partials/header', { user: user, title: kos.nama_kos + ' - SIRUMAH KOS' }) %>
+
+<a href="/" class="back-link">← Kembali ke daftar</a>
+
+<div class="detail-container">
+  <img src="<%= kos.foto %>" alt="<%= kos.nama_kos %>" class="detail-img">
+  <div class="detail-info">
+    <span class="badge badge-<%= kos.jenis_kos %>"><%= kos.jenis_kos.toUpperCase() %></span>
+    <h1><%= kos.nama_kos %></h1>
+    <p class="detail-location">📍 <%= kos.alamat %>, <%= kos.lokasi %></p>
+    <p class="detail-price">Rp <%= kos.harga.toLocaleString('id-ID') %> <span>/bulan</span></p>
+
+    <h3>Deskripsi</h3>
+    <p><%= kos.deskripsi || 'Tidak ada deskripsi' %></p>
+
+    <h3>Fasilitas</h3>
+    <ul class="facility-list">
+      <% if (kos.fasilitas && kos.fasilitas.length > 0) { %>
+        <% kos.fasilitas.forEach(f => { %>
+          <li>✓ <%= f %></li>
+        <% }) %>
+      <% } else { %>
+        <li>-</li>
+      <% } %>
+    </ul>
+
+    <h3>Kontak</h3>
+    <p>📞 <%= kos.kontak || '-' %></p>
+
+    <div class="detail-actions">
+      <% if (!user) { %>
+        <a href="/login" class="btn btn-primary">Login untuk Favorit</a>
+      <% } else if (user.role === 'user') { %>
+        <form action="/favorit/tambah/<%= kos.id %>" method="POST" style="display:inline">
+          <button type="submit" class="btn btn-fav">♥ Tambah ke Favorit</button>
+        </form>
+      <% } else if (user.role === 'admin') { %>
+        <a href="/edit-kos/<%= kos.id %>" class="btn btn-secondary">Edit Kos</a>
+        <form action="/hapus-kos/<%= kos.id %>" method="POST" style="display:inline"
+              onsubmit="return confirm('Yakin ingin menghapus kos ini?')">
+          <button type="submit" class="btn btn-danger">Hapus Kos</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

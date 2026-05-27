@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "nama_kos": "Kos Melati Asri",
+    "alamat": "Jl. Melati No. 12, Tembalang",
+    "lokasi": "Semarang",
+    "harga": 850000,
+    "jenis_kos": "putri",
+    "fasilitas": [
+      "WiFi",
+      "Kamar Mandi Dalam",
+      "Lemari",
+      "Kasur",
+      "AC"
+    ],
+    "deskripsi": "Kos putri nyaman dan aman dekat kampus Undip. Lingkungan tenang, cocok untuk mahasiswa.",
+    "kontak": "081234567890",
+    "foto": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80"
+  },
+  {
+    "id": 2,
+    "nama_kos": "Kos Anggrek Putra",
+    "alamat": "Jl. Anggrek Raya No. 45, Banyumanik",
+    "lokasi": "Semarang",
+    "harga": 700000,
+    "jenis_kos": "putra",
+    "fasilitas": [
+      "WiFi",
+      "Kamar Mandi Luar",
+      "Lemari",
+      "Kasur",
+      "Parkir Motor"
+    ],
+    "deskripsi": "Kos putra strategis, dekat dengan minimarket dan warung makan.",
+    "kontak": "082345678901",
+    "foto": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80"
+  },
+  {
+    "id": 3,
+    "nama_kos": "Wisma Mawar",
+    "alamat": "Jl. Mawar No. 8, Tembalang",
+    "lokasi": "Semarang",
+    "harga": 1200000,
+    "jenis_kos": "campur",
+    "fasilitas": [
+      "WiFi",
+      "Kamar Mandi Dalam",
+      "AC",
+      "TV",
+      "Dapur Bersama",
+      "Laundry"
+    ],
+    "deskripsi": "Wisma eksklusif dengan fasilitas lengkap. Aman dan bersih.",
+    "kontak": "083456789012",
+    "foto": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80"
+  },
+  {
+    "id": 4,
+    "nama_kos": "Kos Dahlia",
+    "alamat": "Jl. Dahlia No. 21, Depok",
+    "lokasi": "Depok",
+    "harga": 950000,
+    "jenis_kos": "putri",
+    "fasilitas": [
+      "WiFi",
+      "Kamar Mandi Dalam",
+      "AC",
+      "Kulkas",
+      "Dispenser"
+    ],
+    "deskripsi": "Kos putri dekat kampus UI. Bangunan baru, fasilitas lengkap.",
+    "kontak": "084567890123",
+    "foto": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80"
+  },
+  {
+    "id": 5,
+    "nama_kos": "Kos Cendana",
+    "alamat": "Jl. Cendana No. 3, Jatinangor",
+    "lokasi": "Bandung",
+    "harga": 650000,
+    "jenis_kos": "putra",
+    "fasilitas": [
+      "WiFi",
+      "Kamar Mandi Luar",
+      "Parkir",
+      "Kasur"
+    ],
+    "deskripsi": "Kos murah meriah dekat kampus Unpad. Pemilik ramah.",
+    "kontak": "085678901234",
+    "foto": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80"
+  },
+  {
+    "id": 6,
+    "nama_kos": "Kos Salemba Bahagia",
+    "alamat": "Jl. Salemba Raya No. 23, Senen",
+    "lokasi": "Jakarta",
+    "harga": 1400000,
+    "jenis_kos": "putri",
+    "fasilitas": [
+      "WiFi",
+      "AC",
+      "Kamar Mandi Dalam",
+      "Kasur",
+      "Lemari",
+      "Dapur Bersama"
+    ],
+    "deskripsi": "Kos putri 2 lantai dekat FKUI Salemba dan kampus UPN Jakarta. Lingkungan kondusif untuk mahasiswa kedokteran.",
+    "kontak": "081234500001",
+    "foto": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80"
+  },
+  {
+    "id": 7,
+    "nama_kos": "Kos Cikini Heritage",
+    "alamat": "Jl. Cikini Raya No. 78, Menteng",
+    "lokasi": "Jakarta",
+    "harga": 1800000,
+    "jenis_kos": "campur",
+    "fasilitas": [
+      "WiFi",
+      "AC",
+      "Kamar Mandi Dalam",
+      "TV",
+      "Kulkas Bersama",
+      "Laundry"
+    ],
+    "deskripsi": "Kos modern di bangunan heritage Cikini. Dekat IKJ, Taman Ismail Marzuki, dan stasiun Cikini. Suasana artistik.",
+    "kontak": "081234500002",
+    "foto": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80"
+  },
+  {
+    "id": 8,
+    "nama_kos": "Wisma Menteng Indah",
+    "alamat": "Jl. Menteng Kecil No. 5, Menteng",
+    "lokasi": "Jakarta",
+    "harga": 2200000,
+    "jenis_kos": "putra",
+    "fasilitas": [
+      "WiFi",
+      "AC",
+      "Kamar Mandi Dalam",
+      "Kasur Premium",
+      "Lemari",
+      "Meja Belajar",
+      "Parkir Mobil"
+    ],
+    "deskripsi": "Kos putra eksklusif di jantung Menteng. Akses cepat ke kawasan Sudirman-Thamrin. Cocok untuk profesional muda.",
+    "kontak": "081234500003",
+    "foto": "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80"
+  },
+  {
+    "id": 9,
+    "nama_kos": "Test Upload",
+    "alamat": "Jl Test",
+    "lokasi": "Test",
+    "harga": 500000,
+    "jenis_kos": "putra",
+    "fasilitas": [],
+    "deskripsi": "",
+    "kontak": "",
+    "foto": "/uploads/kos-1779299066594-772498.png"
+  }
+]

@@ -1,0 +1,28 @@
+<%- include('partials/header', { user: user, title: 'Register - SIRUMAH KOS' }) %>
+
+<div class="auth-container">
+  <h1>Daftar Akun Pencari Kos</h1>
+  <p class="subtitle">Daftar gratis untuk menyimpan kos favorit.</p>
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form action="/register" method="POST" class="form">
+    <label>Username</label>
+    <input type="text" name="username" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required minlength="4">
+
+    <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+  </form>
+
+  <p class="auth-link">Sudah punya akun? <a href="/login">Login di sini</a></p>
+</div>
+
+<script src="/js/auth-client.js"></script>
+
+<%- include('partials/footer') %>

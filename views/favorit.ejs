@@ -1,0 +1,32 @@
+<%- include('partials/header', { user: user, title: 'Favorit - SIRUMAH KOS' }) %>
+
+<h1>Kos Favorit Saya</h1>
+<p class="subtitle">Daftar kos yang telah Anda simpan.</p>
+
+<% if (favoritList.length === 0) { %>
+  <div class="empty">
+    Anda belum punya kos favorit. <a href="/">Cari kos sekarang</a>.
+  </div>
+<% } else { %>
+  <div class="grid">
+    <% favoritList.forEach(item => { %>
+      <div class="card">
+        <img src="<%= item.kos.foto %>" alt="<%= item.kos.nama_kos %>" class="card-img">
+        <div class="card-body">
+          <span class="badge badge-<%= item.kos.jenis_kos %>"><%= item.kos.jenis_kos.toUpperCase() %></span>
+          <h3><%= item.kos.nama_kos %></h3>
+          <p class="card-location">📍 <%= item.kos.alamat %>, <%= item.kos.lokasi %></p>
+          <p class="card-price">Rp <%= item.kos.harga.toLocaleString('id-ID') %> <span>/bulan</span></p>
+          <div class="card-actions">
+            <a href="/kos/<%= item.kos.id %>" class="btn btn-primary btn-sm">Detail</a>
+            <form action="/favorit/hapus/<%= item.favorit_id %>" method="POST" style="display:inline">
+              <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

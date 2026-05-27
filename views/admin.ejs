@@ -1,0 +1,89 @@
+<%- include('partials/header', { user: user, title: 'Admin - SIRUMAH KOS' }) %>
+
+<h1>Halaman Admin</h1>
+<p class="subtitle">Kelola data kos dan lihat daftar user.</p>
+
+<div class="admin-stats">
+  <div class="stat-card">
+    <div class="stat-number"><%= kosList.length %></div>
+    <div class="stat-label">Total Kos</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number"><%= users.length %></div>
+    <div class="stat-label">Total User</div>
+  </div>
+</div>
+
+<section class="admin-section">
+  <div class="section-head">
+    <h2>Kelola Data Kos</h2>
+    <a href="/tambah-kos" class="btn btn-primary">+ Tambah Kos</a>
+  </div>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nama Kos</th>
+          <th>Lokasi</th>
+          <th>Jenis</th>
+          <th>Harga</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% kosList.forEach(kos => { %>
+          <tr>
+            <td><%= kos.id %></td>
+            <td><%= kos.nama_kos %></td>
+            <td><%= kos.lokasi %></td>
+            <td><span class="badge badge-<%= kos.jenis_kos %>"><%= kos.jenis_kos %></span></td>
+            <td>Rp <%= kos.harga.toLocaleString('id-ID') %></td>
+            <td>
+              <a href="/kos/<%= kos.id %>" class="btn btn-sm btn-secondary">Lihat</a>
+              <a href="/edit-kos/<%= kos.id %>" class="btn btn-sm btn-primary">Edit</a>
+              <form action="/hapus-kos/<%= kos.id %>" method="POST" style="display:inline"
+                    onsubmit="return confirm('Yakin ingin menghapus kos ini?')">
+                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="admin-section">
+  <h2>Daftar User</h2>
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Terdaftar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users.length === 0) { %>
+          <tr><td colspan="5" style="text-align:center;color:#888">Belum ada user terdaftar</td></tr>
+        <% } %>
+        <% users.forEach(u => { %>
+          <tr>
+            <td><%= u.id %></td>
+            <td><%= u.username %></td>
+            <td><%= u.email %></td>
+            <td><%= u.role %></td>
+            <td><%= new Date(u.createdAt).toLocaleDateString('id-ID') %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

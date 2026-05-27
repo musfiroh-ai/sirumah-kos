@@ -1,0 +1,62 @@
+<%- include('partials/header', { user: user, title: 'Edit Kos - SIRUMAH KOS' }) %>
+
+<div class="form-container">
+  <h1>Edit Kos: <%= kos.nama_kos %></h1>
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form action="/edit-kos/<%= kos.id %>" method="POST" class="form" enctype="multipart/form-data">
+    <label>Nama Kos *</label>
+    <input type="text" name="nama_kos" value="<%= kos.nama_kos %>" required>
+
+    <label>Alamat *</label>
+    <input type="text" name="alamat" value="<%= kos.alamat %>" required>
+
+    <label>Lokasi *</label>
+    <input type="text" name="lokasi" value="<%= kos.lokasi %>" required>
+
+    <label>Harga per Bulan (Rp) *</label>
+    <input type="number" name="harga" value="<%= kos.harga %>" required>
+
+    <label>Jenis Kos *</label>
+    <select name="jenis_kos" required>
+      <option value="putra" <%= kos.jenis_kos === 'putra' ? 'selected' : '' %>>Putra</option>
+      <option value="putri" <%= kos.jenis_kos === 'putri' ? 'selected' : '' %>>Putri</option>
+      <option value="campur" <%= kos.jenis_kos === 'campur' ? 'selected' : '' %>>Campur</option>
+    </select>
+
+    <label>Fasilitas (pisahkan dengan koma)</label>
+    <input type="text" name="fasilitas" value="<%= (kos.fasilitas || []).join(', ') %>">
+
+    <label>Deskripsi</label>
+    <textarea name="deskripsi" rows="4"><%= kos.deskripsi %></textarea>
+
+    <label>Kontak</label>
+    <input type="text" name="kontak" value="<%= kos.kontak %>">
+
+    <fieldset class="foto-section">
+      <legend>Foto Kos</legend>
+
+      <% if (kos.foto) { %>
+        <p class="foto-hint">Foto saat ini:</p>
+        <img src="<%= kos.foto %>" alt="Foto kos saat ini" class="foto-preview">
+      <% } %>
+
+      <label style="margin-top:14px">Ganti dengan Upload File Baru</label>
+      <input type="file" name="foto_file" accept="image/*">
+      <small class="form-hint">Kosongkan jika tidak ingin mengganti foto. Maks 5MB.</small>
+
+      <label style="margin-top:14px">Atau Ganti dengan URL Baru</label>
+      <input type="text" name="foto" placeholder="https://...">
+      <small class="form-hint">Kosongkan jika tidak ingin mengganti foto.</small>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a href="/kos/<%= kos.id %>" class="btn btn-secondary">Batal</a>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

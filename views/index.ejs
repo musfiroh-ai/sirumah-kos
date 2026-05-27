@@ -1,0 +1,65 @@
+<%- include('partials/header', { user: user, title: 'Beranda - SIRUMAH KOS' }) %>
+
+<section class="hero">
+  <h1>Temukan Kos Idaman Anda</h1>
+  <p>Cari kos berdasarkan lokasi, harga, jenis, dan fasilitas dengan mudah.</p>
+  <p class="hero-cta">Punya kos? <a href="#daftarkan-kos">Daftarkan di sini</a></p>
+</section>
+
+<section class="filter-section">
+  <form action="/" method="GET" class="filter-form">
+    <input type="text" name="search" placeholder="Cari nama atau alamat kos..." value="<%= filter.search %>">
+    <select name="lokasi">
+      <option value="">Semua Lokasi</option>
+      <% daftarLokasi.forEach(lok => { %>
+        <option value="<%= lok %>" <%= filter.lokasi === lok ? 'selected' : '' %>><%= lok %></option>
+      <% }) %>
+    </select>
+    <select name="jenis_kos">
+      <option value="">Semua Jenis</option>
+      <option value="putra" <%= filter.jenis_kos === 'putra' ? 'selected' : '' %>>Putra</option>
+      <option value="putri" <%= filter.jenis_kos === 'putri' ? 'selected' : '' %>>Putri</option>
+      <option value="campur" <%= filter.jenis_kos === 'campur' ? 'selected' : '' %>>Campur</option>
+    </select>
+    <input type="number" name="harga_max" placeholder="Harga maksimal" value="<%= filter.harga_max %>">
+    <button type="submit" class="btn btn-primary">Cari</button>
+    <a href="/" class="btn btn-secondary">Reset</a>
+  </form>
+</section>
+
+<section class="kos-list">
+  <h2>Daftar Kos (<%= kosList.length %>)</h2>
+  <% if (kosList.length === 0) { %>
+    <div class="empty">Tidak ada kos yang cocok dengan pencarian Anda.</div>
+  <% } else { %>
+    <div class="grid">
+      <% kosList.forEach(kos => { %>
+        <div class="card">
+          <img src="<%= kos.foto %>" alt="<%= kos.nama_kos %>" class="card-img">
+          <div class="card-body">
+            <span class="badge badge-<%= kos.jenis_kos %>"><%= kos.jenis_kos.toUpperCase() %></span>
+            <h3><%= kos.nama_kos %></h3>
+            <p class="card-location">📍 <%= kos.alamat %>, <%= kos.lokasi %></p>
+            <p class="card-price">Rp <%= kos.harga.toLocaleString('id-ID') %> <span>/bulan</span></p>
+            <div class="card-actions">
+              <a href="/kos/<%= kos.id %>" class="btn btn-primary btn-sm">Lihat Detail</a>
+              <% if (user && user.role === 'user') { %>
+                <form action="/favorit/tambah/<%= kos.id %>" method="POST" style="display:inline">
+                  <button type="submit" class="btn btn-fav btn-sm">♥ Favorit</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<script>
+  // Set role user untuk dipakai client-side script
+  window.__currentUserRole = '<%= user ? user.role : "" %>';
+</script>
+<script src="/js/main-client.js"></script>
+
+<%- include('partials/footer') %>

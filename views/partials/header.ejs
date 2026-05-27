@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'SIRUMAH KOS' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="brand">
+        <% if (logoPath) { %>
+          <img src="<%= logoPath %>" alt="SIRUMAH KOS" class="brand-logo">
+        <% } else { %>
+          <span class="brand-icon">🏠</span>
+        <% } %>
+        <span>SIRUMAH KOS</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="/">Beranda</a></li>
+        <% if (user) { %>
+          <% if (user.role === 'admin') { %>
+            <li><a href="/admin">Dashboard Admin</a></li>
+            <li><a href="/tambah-kos">Tambah Kos</a></li>
+            <li class="nav-user">Admin: <strong><%= user.username %></strong> <span class="role-badge role-admin">ADMIN</span></li>
+          <% } else { %>
+            <li><a href="/favorit">Favorit Saya</a></li>
+            <li class="nav-user">Hi, <strong><%= user.username %></strong></li>
+          <% } %>
+          <li><a href="/logout" class="btn-logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register" class="btn-register">Daftar</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+  <main class="container main-content">

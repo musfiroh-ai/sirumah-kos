@@ -1,0 +1,25 @@
+<%- include('partials/header', { user: user, title: 'Login - SIRUMAH KOS' }) %>
+
+<div class="auth-container">
+  <h1>Login</h1>
+  <p class="subtitle">Masuk untuk menyimpan kos favorit Anda.</p>
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form action="/login" method="POST" class="form">
+    <label>Username atau Email</label>
+    <input type="text" name="username" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+  </form>
+
+  <p class="auth-link">Belum punya akun? <a href="/register">Daftar di sini</a></p>
+</div>
+
+<script src="/js/auth-client.js"></script>
+
+<%- include('partials/footer') %>
